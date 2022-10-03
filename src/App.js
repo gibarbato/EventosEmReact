@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Led from './componentes/Led'
 
-function App() {
+export default function App() {
+
+  const [ligado, setLigado]=useState(false)
+
+  //cancelar o comportamento padrão do componente
+  const cancelar=(obj)=>{
+    return obj.preventDefault()
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+    <Led ligado={ligado} setLigado={setLigado}/>
     </div>
+      
+      <a 
+        href='http://youtube.com' 
+        target='_blank' 
+        onClick={(e)=>cancelar(e)}
+        >
+        Curso de React - Eventos em React
+      </a>
+    </>
   );
 }
 
-export default App;
+
